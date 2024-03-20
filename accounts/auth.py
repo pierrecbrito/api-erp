@@ -12,8 +12,8 @@ class Authentication():
         if not user_exists:
             raise exception_auth
         
-        user = User.objects.first(email=email)
-        if not check_password(password, user):
+        user = User.objects.filter(email=email).first()
+        if not check_password(password=password, encoded=user.password):
             raise exception_auth
 
         return user
@@ -53,3 +53,5 @@ class Authentication():
                 enterprise_id=company_id or created_enterprise.id, 
                 user_id=created_user.id
             )
+        
+        return created_user
