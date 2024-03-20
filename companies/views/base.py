@@ -17,7 +17,7 @@ class Base(APIView):
     def get_employee(self, employee_id, user_id):
         enterprise_id = self.get_enterprise_id(user_id=user_id)
 
-        employee = Employee.objects.filter(id=employee_id, enterprise_id=enterprise_id).first
+        employee = Employee.objects.filter(id=employee_id, enterprise_id=enterprise_id).first()
 
         if not employee:
             raise NotFoundEmployee
