@@ -13,8 +13,6 @@ Execute o projeto com Python
     
 ## 💎 Stacks utilizadas
 
-**Front-end:** ReactJS, TypeScript, React-Router, Redux, Material UI, Axios
-
 **Back-end:** Django, Django Rest Framework, Simple JWT
 
 
