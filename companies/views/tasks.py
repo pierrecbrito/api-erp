@@ -79,12 +79,18 @@ class TaskDetail(Base):
         title = request.data.get('title', task.title)#Em caso de vir pela API, vai o parâmetro 1. Em caso de não, vai o que já está salvo.
         description = request.data.get('description', task.description)
         status_id = request.data.get('status_id', task.status.id)
-        due_date = request.data.get('due_date', task.due_Date)
+        due_date = request.data.get('due_date', task.due_date)
 
         #validators
 
         self.get_status(status_id)
         self.get_employee(employee_id, request.user.id)
+
+        if due_date:
+            try:
+                due_date = datetime.datetime.strptime(due_date, "%d/%m/%Y %H:%M")
+            except ValueError:
+                raise APIException('A data deve ter o padrão: d/m/Y H:M', "date_invalid")
 
         data = {
             "title": title,

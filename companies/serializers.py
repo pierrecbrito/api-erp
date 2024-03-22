@@ -96,7 +96,8 @@ class TasksSerializer(serializers.ModelSerializer):
             'title',
             'description',
             'created_at',
-            'status'
+            'status',
+            'due_date'
         )
     
     def get_status(self, obj):
@@ -114,7 +115,8 @@ class TaskSerializer(serializers.ModelSerializer):
             'description',
             'created_at',
             'status',
-            'employee'
+            'employee',
+            'due_date'
         )
     
     def get_status(self, obj):
@@ -128,7 +130,7 @@ class TaskSerializer(serializers.ModelSerializer):
         instance.description = validated_data.get('description', instance.description)
         instance.status_id = validated_data.get('status_id', instance.status_id)
         instance.employee_id = validated_data.get('employee_id', instance.employee_id)
-        instance.due_Date = validated_data.get('due_Date', instance.due_Date)
+        instance.due_date = validated_data.get('due_date', instance.due_date)
         
         instance.save()
 
